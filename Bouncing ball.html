@@ -1,0 +1,100 @@
+<html>
+<body>
+
+<canvas id="myCanvas" width="800" height="600" style="border:1px solid #000000;">
+</canvas>
+<script>
+var x=95;var y=50;var canvas;var ctx;var speed=13;var speedy =13; var pad1=200;
+var play1=0;var showin= false;
+const win=3;
+function mouse(evt){
+var rect = canvas.getBoundingClientRect();
+var root = document.documentElement;
+var mouseX= evt.clientX - rect.left - root.scrollLeft;
+var mouseY = evt.clientY - rect.top - root.scrollTop;
+return{
+hx:mouseX,
+hy:mouseY
+};
+}
+function mouseclick(evt){
+if(showin){
+play1=0;
+showin=false;}
+}
+window.onload= function () {
+ canvas = document.getElementById("myCanvas");
+ ctx = canvas.getContext('2d');
+//fps is frame per second.
+var fps  = 30;
+setInterval(call,1000/fps);
+canvas.addEventListener('mousedown',mouseclick);
+canvas.addEventListener('mousemove',
+function(evt){
+var mousepos = mouse(evt);
+pad1=mousepos.hx-50;
+});
+}
+function ballreset(){
+if(play1>= win ){
+showin = true; 
+}
+x=400;
+y=300;
+}
+function call(){
+move();
+draw();
+}
+
+function move(){
+if (showin){
+return;}
+x=x+speed;
+y=y+speedy;
+if (y>590){
+ if(x>pad1 && x<pad1+100){
+speedy=-speedy;
+var deltay=x-(pad1+50);
+speed= deltay*0.35;
+  } else {
+speedy=-speedy;play1+=1;//before ball reset
+ballreset();}
+}
+if (y<7){
+speedy=-speedy;
+}
+if (x>793){
+speed=-speed;
+}
+if (x<7){
+speed=-speed;
+}
+if (x>=100-8&&x<=200+8&&y>=100-8&&y<=105+8){speed=-speed*1.001;speedy=-speedy*1.0001;}
+if (x>=500-8&&x<=600+8&&y>=150-8&&y<=155+8){speed=-speed*1.001;speedy=-speedy*1.0001;}
+if (x>=350-8&&x<=450+8&&y>=500-8&&y<=505+8){speed=-speed*1.001;speedy=-speedy*1.0001;}
+}
+function draw(){
+ctx.fillStyle='black';
+ctx.fillRect(0,0,800,600);
+ctx.fillStyle='white';
+ctx.fillRect(pad1,595,100,5);
+ctx.fillStyle='white';
+ctx.beginPath();
+ctx.arc(x,y,8,0,Math.PI*2);  
+ctx.fill();
+ctx.fillText(play1,100,80);
+ctx.fillText("You have three chances",100,30);
+ctx.fillRect(100,100,100,5);
+ctx.fillRect(350,500,100,5);
+ctx.fillRect(500,150,100,5);
+if (showin){
+ctx.fillStyle='white';
+if (play1>=win){
+ctx.fillText("You are out of hearts",200,200);
+} ctx.fillText("Click to continue",400,500);return;
+}
+}
+</script>
+</body>
+</html>

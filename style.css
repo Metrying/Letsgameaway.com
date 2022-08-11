@@ -1,0 +1,115 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+body{
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+#container{
+    height: 400px;
+    width: 1200px;
+    position: relative;
+    overflow: hidden;
+
+}
+
+#container #back
+{
+    height: 400px;
+    width: 1200px;
+}
+#container #back img{
+    height: 442.5px;
+    width: 1200px;
+}
+
+#container #dino
+{
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    bottom: 18px;
+    left: 20px;
+}
+#container #dino img{
+    height: 100px;
+    width: 100px;
+}
+.dinoActive{
+    animation: animateDino 0.5s linear infinite ;
+}
+@keyframes animateDino{
+    0%,100%
+    {
+        bottom: 28px;
+    }
+    45%,55%
+    {
+        bottom: 160px;
+    }
+}
+#container #block{
+height: 80px;
+width: 100px;
+position: absolute;
+bottom: 20px;
+right: -20px;
+}
+#container #block img{
+    height: 80px;
+    width: 100px;
+}
+.blockActive{
+    animation: blockAnimate 1s linear infinite;
+}
+@keyframes blockAnimate{
+    0%{
+        right: -125px;
+    }
+    100%{
+        right: 100%;
+    }
+}
+#container #road{
+    height: 30px;
+    width: 1200px;
+    position: absolute;
+    bottom: 19px;
+}
+#container #road img{
+    height: 30px;
+    width: 2000px;
+    position: absolute;
+    left: 0;
+    animation:roadAnimate 1s linear infinite ;
+}
+@keyframes roadAnimate{
+    0%{
+        right: 0;
+    }
+    100%{
+        right: 100%;
+    }
+}
+#score{
+    height: auto;
+    width: auto;
+    position: absolute;
+    top: 20px;
+    right: 0;
+}
+#gameOver{
+    font-size: 70px;
+    position: absolute;
+    left: 100px;
+    top: 200px;
+    width: 362px;
+    height: 80px;
+    color: black;
+}
