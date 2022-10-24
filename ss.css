@@ -37,7 +37,7 @@ color: #2a3086;
     position: absolute;
     top: 8rem;
     left: 4%;
-    font-size: 7vw;
+    font-size: 6.6vw;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
     text-align: center;
 }
@@ -52,7 +52,7 @@ color: #2a3086;
 }
 #text p{
     margin: 2rem 0 2rem;
-    font-size: 1.8rem;
+    font-size: 2.2vw;
     font-family: Papyrus;
 }
 #row{
